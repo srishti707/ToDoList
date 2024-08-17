@@ -1,0 +1,38 @@
+{
+  "name": "to-Do List",
+  "short_name": "To-Do List",
+  "theme_color": "#000000",
+  "background_color": "#53606a",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+
+  "icons":[
+    {
+      "src":"maskable_icon.png",
+      "size":"211*211",
+      "type":"image/png",
+      "purpose":"any maskable"
+    },
+    {
+      "src":"android-chrome-192x192.png",
+      "sizes":"192*192",
+      "type":"image/png"
+      },
+    {
+    "src":"256x256.png",
+    "sizes":"256*256",
+    "type":"image/png"
+    },
+    {
+    "src":"384x384.png",
+    "sizes":"384*384",
+    "type":"image/png"
+    },
+    {
+      "src":"android-chrome-512x512.png",
+      "sizes":"512*512",
+      "type":"image/png"
+      }
+  ]
+}
