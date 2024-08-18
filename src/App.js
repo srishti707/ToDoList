@@ -3,8 +3,25 @@ import React, { useEffect, useState } from "react";
  import {FaEdit} from "react-icons/fa";
  import {AiFillDelete} from "react-icons/ai";
 import {v4 as uuidv4} from 'uuid';
+import { messaging } from "./firebase";
+import { getToken } from "firebase/messaging";
 
 const App = () => {
+  async function requestPermission(){
+   const permission=await  Notification.requestPermission();
+   if(permission==="granted"){
+    //Generate Token
+    const token=await getToken(messaging,{vapidKey:
+      'BJOCQdl8cEQmQqoEKC9XccONjgapqZk400gPAImD4bhgAoLhB2k4VJBA3HnUGsE4whMn0XGCQv92Rev3kFiygMM'})
+    console.log("Token generated",token);
+   }else if(permission==="denied"){
+    alert("You denied for the notifications");
+
+   }
+  }
+  useEffect(() => {
+    requestPermission();
+  },[])
   const [todo, setToDo] = useState(""); //text of 1 todo item
   const [todos, setToDos] = useState([]);//array of all todos
   const[showfinished,setShowFinished] = useState(true)
