@@ -5,14 +5,14 @@ import { AiFillDelete } from "react-icons/ai";
 import { v4 as uuidv4 } from "uuid";
 import { messaging } from "../firebase";
 import { getToken } from "firebase/messaging";
-import { doc, setDoc, updateDoc, deleteDoc,get, getDoc } from "firebase/firestore";
+import { doc, setDoc, updateDoc, deleteDoc, getDoc } from "firebase/firestore";
 import { useContext } from "react";
 import { AuthContext } from "../store/AuthContext";
 import { db } from "../firebase";
 import useTodo from "../hooks/useTodos";
 
 const HomePage = () => {
-  const { user, updateUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const {allTodos,loading} = useTodo();
   console.log(allTodos)
   console.log(user)
@@ -33,19 +33,10 @@ const HomePage = () => {
     requestPermission();
   }, []);
   const [todo, setToDo] = useState(""); //text of 1 todo item
-  const [todos, setToDos] = useState([]); //array of all todos
   const [showfinished, setShowFinished] = useState(true);
   const [saving,setSaving] = useState(false)
 
-  useEffect(() => {
-    let todoString = localStorage.getItem("todos");
-    console.log(todoString);
-    if (todoString) {
-      console.log("insideit");
-      let todos = JSON.parse(localStorage.getItem("todos"));
-      setToDos(todos);
-    }
-  }, []);
+ 
 
   const handleAdd = async () => {
     setSaving(true);
